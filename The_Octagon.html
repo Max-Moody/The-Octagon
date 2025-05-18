@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Octagon | Slough Mixed-Use Development</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+Bx0TZyhMC8Rs7A+qbIghu2lQX2YgXjUqtzHqCxrA=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-n8A+U7w58dw6dl9PZtaU9Eu1q2v90SSiUpSgkO9Fg0M=" crossorigin=""></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      color: #333;
+      background: #f9f9f9;
+    }
+    header {
+      background: #101010;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #222;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background: url("images/hero.jpg") center/cover no-repeat;
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card h3 {
+      padding: 1rem;
+      margin: 0;
+    }
+    .card p {
+      padding: 0 1rem 1rem;
+    }
+    #mapid {
+      height: 400px;
+      width: 100%;
+      border-radius: 10px;
+    }
+    footer {
+      background: #101010;
+      color: #ccc;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>The Octagon, Slough</h1>
+    <p>25,240 sqm Landmark Mixed-Use Development | Grade A Offices | Retail | Rooftop Terrace | Parking</p>
+  </header>
+
+  <nav>
+    <a href="#offices">Offices</a>
+    <a href="#retail">Retail</a>
+    <a href="#features">Features</a>
+    <a href="#map">Map</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero" style="height: 600px;"></section>
+
+  <section id="offices" class="section">
+    <h2>Office Space</h2>
+    <p>
+      Offering over <strong>15,000 sqm</strong> of Grade A office space with flexible floorplates, 2.85m floor-to-ceiling heights, and abundant natural light.
+      Designed for modern businesses with sustainability and tech-readiness at its core.
+    </p>
+  </section>
+
+  <section id="retail" class="section">
+    <h2>Retail & Leisure</h2>
+    <p>
+      The ground floor hosts <strong>649.6 sqm</strong> of vibrant retail and café spaces split across two double-height units:
+      <ul>
+        <li>Retail Unit A – 395.7 sqm</li>
+        <li>Retail Unit B – 253.9 sqm</li>
+      </ul>
+      Ideal for wellness brands, food operators, and independents that complement office tenants.
+    </p>
+  </section>
+
+  <section id="features" class="section">
+    <h2>Development Highlights</h2>
+    <div class="features">
+      <div class="card">
+        <img src="images/reception.jpg" alt="Reception CGI" />
+        <h3>Reception</h3>
+        <p>Double-height lobby with natural finishes, digital concierge, and flexible lounge spaces to welcome staff and visitors.</p>
+      </div>
+      <div class="card">
+        <img src="images/retail.jpg" alt="Retail CGI" />
+        <h3>Retail Activation</h3>
+        <p>Public-facing units designed to bring life to the street with flexible fit-out support post-PC.</p>
+      </div>
+      <div class="card">
+        <img src="images/parking.jpg" alt="Parking CGI" />
+        <h3>Parking & EV</h3>
+        <p>Basement parking for 104 vehicles including 18 EV spaces, bicycle storage, and accessible bays.</p>
+      </div>
+      <div class="card">
+        <img src="images/rooftop.jpg" alt="Terrace CGI" />
+        <h3>Rooftop Terrace</h3>
+        <p>239 sqm landscaped terrace with panoramic views, breakout areas, and event potential. Powered by 778 sqm of solar panels.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="map" class="section">
+    <h2>Find Us</h2>
+    <div id="mapid"></div>
+    <script>
+      var map = L.map('mapid').setView([51.509865, -0.595448], 15); // Slough Brunel Way
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+      L.marker([51.509865, -0.595448]).addTo(map)
+        .bindPopup('The Octagon - Brunel Way, Slough')
+        .openPopup();
+    </script>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>
+      For leasing or investment enquiries, contact our agents:<br>
+      <strong>Email:</strong> <a href="mailto:info@octagon-slough.com">info@octagon-slough.com</a><br>
+      <strong>Phone:</strong> +44 (0)20 1234 5678
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 The Octagon | Developed by Nicholls Dobson Properties
+  </footer>
+
+</body>
+</html>
