@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Octagon | Slough Mixed-Use Development</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-sA+Bx0TZyhMC8Rs7A+qbIghu2lQX2YgXjUqtzHqCxrA=" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-n8A+U7w58dw6dl9PZtaU9Eu1q2v90SSiUpSgkO9Fg0M=" crossorigin=""></script>
+
+  <!-- Leaflet for Interactive Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -16,13 +17,17 @@
       background: #f9f9f9;
     }
     header {
-      background: #101010;
+      background: #002349; /* Navy */
       color: white;
       padding: 2rem 1rem;
       text-align: center;
     }
+    header img {
+      max-width: 160px;
+      margin-bottom: 1rem;
+    }
     nav {
-      background: #222;
+      background: #003366; /* darker navy */
       display: flex;
       justify-content: center;
       gap: 2rem;
@@ -35,16 +40,7 @@
     }
     .hero {
       background: url("images/hero.jpg") center/cover no-repeat;
-      color: white;
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin: 0;
-    }
-    .hero p {
-      font-size: 1.2rem;
+      height: 600px;
     }
     .section {
       max-width: 1000px;
@@ -79,9 +75,10 @@
       height: 400px;
       width: 100%;
       border-radius: 10px;
+      margin-top: 1rem;
     }
     footer {
-      background: #101010;
+      background: #002349; /* Navy */
       color: #ccc;
       text-align: center;
       padding: 2rem;
@@ -89,9 +86,11 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
+    <img src="images/logo.jpg" alt="The Octagon Logo" />
     <h1>The Octagon, Slough</h1>
     <p>25,240 sqm Landmark Mixed-Use Development | Grade A Offices | Retail | Rooftop Terrace | Parking</p>
   </header>
@@ -104,50 +103,50 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <section class="hero" style="height: 600px;"></section>
+  <section class="hero"></section>
 
   <section id="offices" class="section">
     <h2>Office Space</h2>
     <p>
-      Offering over <strong>15,000 sqm</strong> of Grade A office space with flexible floorplates, 2.85m floor-to-ceiling heights, and abundant natural light.
-      Designed for modern businesses with sustainability and tech-readiness at its core.
+      Over <strong>15,000 sqm</strong> of Grade A office space across efficient floorplates.
+      Features 2.85m ceilings, extensive glazing, BREEAM Excellent & EPC A targets.
     </p>
   </section>
 
   <section id="retail" class="section">
     <h2>Retail & Leisure</h2>
     <p>
-      The ground floor hosts <strong>649.6 sqm</strong> of vibrant retail and café spaces split across two double-height units:
+      The ground floor includes <strong>649.6 sqm</strong> of double-height retail/café space:
       <ul>
         <li>Retail Unit A – 395.7 sqm</li>
         <li>Retail Unit B – 253.9 sqm</li>
       </ul>
-      Ideal for wellness brands, food operators, and independents that complement office tenants.
+      Designed for wellness, food & independent operators to activate the street frontage.
     </p>
   </section>
 
   <section id="features" class="section">
-    <h2>Development Highlights</h2>
+    <h2>Development Features</h2>
     <div class="features">
       <div class="card">
         <img src="images/reception.jpg" alt="Reception CGI" />
         <h3>Reception</h3>
-        <p>Double-height lobby with natural finishes, digital concierge, and flexible lounge spaces to welcome staff and visitors.</p>
+        <p>Spacious double-height lobby with concierge, lounge areas & sustainable finishes.</p>
       </div>
       <div class="card">
         <img src="images/retail.jpg" alt="Retail CGI" />
-        <h3>Retail Activation</h3>
-        <p>Public-facing units designed to bring life to the street with flexible fit-out support post-PC.</p>
+        <h3>Retail Units</h3>
+        <p>Flexible, visible retail with opportunity for café, fitness, or wellness use.</p>
       </div>
       <div class="card">
         <img src="images/parking.jpg" alt="Parking CGI" />
-        <h3>Parking & EV</h3>
-        <p>Basement parking for 104 vehicles including 18 EV spaces, bicycle storage, and accessible bays.</p>
+        <h3>Parking</h3>
+        <p>104 basement spaces, 18 EV chargers, secure cycle bays, and accessible provision.</p>
       </div>
       <div class="card">
-        <img src="images/rooftop.jpg" alt="Terrace CGI" />
+        <img src="images/rooftop.jpg" alt="Rooftop CGI" />
         <h3>Rooftop Terrace</h3>
-        <p>239 sqm landscaped terrace with panoramic views, breakout areas, and event potential. Powered by 778 sqm of solar panels.</p>
+        <p>239 sqm landscaped terrace with event space, seating, and extensive planting.</p>
       </div>
     </div>
   </section>
@@ -156,12 +155,12 @@
     <h2>Find Us</h2>
     <div id="mapid"></div>
     <script>
-      var map = L.map('mapid').setView([51.509865, -0.595448], 15); // Slough Brunel Way
+      var map = L.map('mapid').setView([51.509865, -0.595448], 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(map);
       L.marker([51.509865, -0.595448]).addTo(map)
-        .bindPopup('The Octagon - Brunel Way, Slough')
+        .bindPopup('<strong>The Octagon</strong><br>Brunel Way, Slough')
         .openPopup();
     </script>
   </section>
@@ -169,14 +168,14 @@
   <section id="contact" class="section">
     <h2>Contact</h2>
     <p>
-      For leasing or investment enquiries, contact our agents:<br>
+      For leasing or investment enquiries:<br>
       <strong>Email:</strong> <a href="mailto:info@octagon-slough.com">info@octagon-slough.com</a><br>
       <strong>Phone:</strong> +44 (0)20 1234 5678
     </p>
   </section>
 
   <footer>
-    &copy; 2025 The Octagon | Developed by Nicholls Dobson Properties
+    &copy; 2025 The Octagon | Created by Max Moody
   </footer>
 
 </body>
