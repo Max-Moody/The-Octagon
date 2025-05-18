@@ -17,17 +17,13 @@
       background: #f9f9f9;
     }
     header {
-      background: #002349; /* Navy */
+      background: #001a33; /* Darker navy */
       color: white;
       padding: 2rem 1rem;
       text-align: center;
     }
-    header img {
-      max-width: 160px;
-      margin-bottom: 1rem;
-    }
     nav {
-      background: #003366; /* darker navy */
+      background: #001a33; /* Darker navy */
       display: flex;
       justify-content: center;
       gap: 2rem;
@@ -78,7 +74,7 @@
       margin-top: 1rem;
     }
     footer {
-      background: #002349; /* Navy */
+      background: #001a33; /* Darker navy */
       color: #ccc;
       text-align: center;
       padding: 2rem;
@@ -90,7 +86,6 @@
 <body>
 
   <header>
-    <img src="images/logo.jpg" alt="The Octagon Logo" />
     <h1>The Octagon, Slough</h1>
     <p>25,240 sqm Landmark Mixed-Use Development | Grade A Offices | Retail | Rooftop Terrace | Parking</p>
   </header>
@@ -155,11 +150,11 @@
     <h2>Find Us</h2>
     <div id="mapid"></div>
     <script>
-      var map = L.map('mapid').setView([51.509865, -0.595448], 15);
+      var map = L.map('mapid').setView([51.510365, -0.595228], 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(map);
-      L.marker([51.509865, -0.595448]).addTo(map)
+      L.marker([51.510365, -0.595228]).addTo(map)
         .bindPopup('<strong>The Octagon</strong><br>Brunel Way, Slough')
         .openPopup();
     </script>
